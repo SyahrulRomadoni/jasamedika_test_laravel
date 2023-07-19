@@ -10,7 +10,7 @@ class KelurahanController extends Controller
 {
     public function index(Request $request)
     {
-        if (Auth::user()->role == "admin") {
+        // if (Auth::user()->role == "admin") {
             if ($request->ajax()) {
                 $data = Kelurahan::latest()->get();
                 return Datatables::of($data)
@@ -19,14 +19,14 @@ class KelurahanController extends Controller
             }
 
             return view('layouts.page.kelurahan.index');
-        } else {
-            abort(403);
-        }
+        // } else {
+        //     abort(403);
+        // }
     }
 
     public function create(Request $request)
     {
-        if (Auth::user()->role == "admin") {
+        // if (Auth::user()->role == "admin") {
             $model = new Kelurahan;
             $model->kelurahan = $request->kelurahan;
             $model->kecamatan = $request->kecamatan;
@@ -46,14 +46,14 @@ class KelurahanController extends Controller
                     'message' => 'Data gagal disimpan'
                 ]);
             }
-        } else {
-            abort(403);
-        } 
+        // } else {
+        //     abort(403);
+        // } 
     }
 
     public function edit(Request $request)
     {
-        if (Auth::user()->role == "admin") {
+        // if (Auth::user()->role == "admin") {
             $model = Kelurahan::where('id', $request->id)->first();
 
             if ($model) {
@@ -71,14 +71,14 @@ class KelurahanController extends Controller
                     'data' => ""
                 ]);
             }
-        } else {
-            abort(403);
-        } 
+        // } else {
+        //     abort(403);
+        // } 
     }
 
     public function update(Request $request)
     {
-        if (Auth::user()->role == "admin") {
+        // if (Auth::user()->role == "admin") {
             $model = Kelurahan::where('id', $request->id)->first();
             $model->kelurahan = $request->kelurahan;
             $model->kecamatan = $request->kecamatan;
@@ -98,9 +98,9 @@ class KelurahanController extends Controller
                     'message' => 'Data gagal diupdate'
                 ]);
             }
-        } else {
-            abort(403);
-        }
+        // } else {
+        //     abort(403);
+        // }
     }
 
     // public function delete(Request $request)

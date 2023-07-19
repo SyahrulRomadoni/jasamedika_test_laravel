@@ -32,13 +32,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/kelurahan/create', [App\Http\Controllers\KelurahanController::class, 'create' ])->name('kelurahan.create');
     Route::get('/kelurahan/edit', [App\Http\Controllers\KelurahanController::class, 'edit' ])->name('kelurahan.edit');
     Route::post('/kelurahan/update', [App\Http\Controllers\KelurahanController::class, 'update' ])->name('kelurahan.update');
-    Route::delete('/kelurahan/delete', [App\Http\Controllers\KelurahanController::class, 'delete' ])->name('kelurahan.delete');
+    // Route::delete('/kelurahan/delete', [App\Http\Controllers\KelurahanController::class, 'delete' ])->name('kelurahan.delete');
 
     // Pasien
     Route::get('/pasien', [App\Http\Controllers\PasienController::class, 'index' ])->name('pasien.index');
     Route::post('/pasien/create', [App\Http\Controllers\PasienController::class, 'create' ])->name('pasien.create');
-    Route::get('/pasien/edit', [App\Http\Controllers\PasienController::class, 'edit' ])->name('pasien.edit');
-    Route::post('/pasien/update', [App\Http\Controllers\PasienController::class, 'update' ])->name('pasien.update');
-    Route::delete('/pasien/delete', [App\Http\Controllers\PasienController::class, 'delete' ])->name('pasien.delete');
+    // Route::get('/pasien/edit', [App\Http\Controllers\PasienController::class, 'edit' ])->name('pasien.edit');
+    // Route::post('/pasien/update', [App\Http\Controllers\PasienController::class, 'update' ])->name('pasien.update');
+    // Route::delete('/pasien/delete', [App\Http\Controllers\PasienController::class, 'delete' ])->name('pasien.delete');
     Route::get('/pasien/cetak-kartu', [App\Http\Controllers\PasienController::class, 'cetak' ])->name('pasien.cetak.kartu');
 });

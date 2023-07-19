@@ -12,7 +12,7 @@ class PasienController extends Controller
 {
     public function index(Request $request)
     {
-        if (Auth::user()->role == "operator") {
+        // if (Auth::user()->role == "operator") {
             $kelurahan = Kelurahan::all();
             if ($request->ajax()) {
                 $data = Pasien::with('kelurahan')->latest()->get();
@@ -22,14 +22,14 @@ class PasienController extends Controller
             }
 
             return view('layouts.page.pasien.index', compact('kelurahan'));
-        } else {
-            abort(403);
-        }
+        // } else {
+        //     abort(403);
+        // }
     }
 
     public function create(Request $request)
     {
-        if (Auth::user()->role == "operator") {
+        // if (Auth::user()->role == "operator") {
             $model = new Pasien;
 
             // Mendapatkan tahun dan bulan saat ini
@@ -73,9 +73,9 @@ class PasienController extends Controller
                     'message' => 'Data gagal disimpan'
                 ]);
             }
-        } else {
-            abort(403);
-        }
+        // } else {
+        //     abort(403);
+        // }
     }
 
     // public function edit(Request $request)

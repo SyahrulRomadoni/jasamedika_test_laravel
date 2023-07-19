@@ -145,44 +145,44 @@
         })
     }
 
-    {{-- Delete --}}
-    function konfirmasiDeleted(id) {
-        $('#konfirmasiDeleted').modal('show');
-        $('#deleted_id').val(id);
-    }
+    // {{-- Delete --}}
+    // function konfirmasiDeleted(id) {
+    //     $('#konfirmasiDeleted').modal('show');
+    //     $('#deleted_id').val(id);
+    // }
 
-    function deleteData() {
-        var data_id = document.getElementById("deleted_id").value;
-        if(data_id !== "") {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "DELETE",
-                url: "{{ route('kelurahan.delete') }}",
-                data: {
-                    id: data_id
-                },
-                success: function (data) {
-                    $('#konfirmasiDeleted').modal('hide');
-                    if (data.status == 'success') {
-                        swal("Success", data.message, "success").then(function() {
-                            tbl_kelurahan.ajax.reload();
-                            $('#konfirmasiDeleted').modal('hide');
-                            $("#deleted_id").val("");
-                        });
-                    } else {
-                        swal('Error', data.message, 'error');
-                    }
-                },
-                error: function (data) {
-                    $('#konfirmasiDeleted').modal('hide');
-                    swal('Error', 'Terjadi Kesalahan', 'error');
-                }
-            });
-        } else {
-            swal('Error', 'Data tidak bisa di hapus', 'error');
-        }
-    }
+    // function deleteData() {
+    //     var data_id = document.getElementById("deleted_id").value;
+    //     if(data_id !== "") {
+    //         $.ajax({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             type: "DELETE",
+    //             url: "#",
+    //             data: {
+    //                 id: data_id
+    //             },
+    //             success: function (data) {
+    //                 $('#konfirmasiDeleted').modal('hide');
+    //                 if (data.status == 'success') {
+    //                     swal("Success", data.message, "success").then(function() {
+    //                         tbl_kelurahan.ajax.reload();
+    //                         $('#konfirmasiDeleted').modal('hide');
+    //                         $("#deleted_id").val("");
+    //                     });
+    //                 } else {
+    //                     swal('Error', data.message, 'error');
+    //                 }
+    //             },
+    //             error: function (data) {
+    //                 $('#konfirmasiDeleted').modal('hide');
+    //                 swal('Error', 'Terjadi Kesalahan', 'error');
+    //             }
+    //         });
+    //     } else {
+    //         swal('Error', 'Data tidak bisa di hapus', 'error');
+    //     }
+    // }
 </script>
 @endsection

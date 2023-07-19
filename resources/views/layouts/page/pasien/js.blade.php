@@ -127,7 +127,7 @@
             if (document.getElementById("id").value == "") {
                 url = "{{route('pasien.create')}}";
             } else {
-                url = "{{route('pasien.update')}}";
+                url = "#";
             }
             $.ajax({
                 type: 'POST',
@@ -180,70 +180,70 @@
         }
     });
 
-    {{-- Edit --}}
-    function edit(id) {
-        var id = id;
-        var url = "{{ route('pasien.edit') }}";
+    // {{-- Edit --}}
+    // function edit(id) {
+    //     var id = id;
+    //     var url = "#";
  
-        $.ajax({
-            url: url,
-            type: 'GET',
-            data: {
-                id: id
-            },
-            success: function (result) {
-                $('#form').modal('show');
-                $('#id').val(result.data.id);
-                $("#nama").val(result.data.nama);
-                $("#alamat").val(result.data.alamat);
-                $("#no_telepon").val(result.data.no_telepon);
-                $('#id_kelurahan').val(result.data.id_kelurahan).change();
-                $("#rt_rw").val(result.data.rt_rw);
-                $("#tanggal_lahir").val(result.data.tanggal_lahir);
-                $("#jenis_kelamin").val(result.data.jenis_kelamin);
-            }
-        })
-    }
+    //     $.ajax({
+    //         url: url,
+    //         type: 'GET',
+    //         data: {
+    //             id: id
+    //         },
+    //         success: function (result) {
+    //             $('#form').modal('show');
+    //             $('#id').val(result.data.id);
+    //             $("#nama").val(result.data.nama);
+    //             $("#alamat").val(result.data.alamat);
+    //             $("#no_telepon").val(result.data.no_telepon);
+    //             $('#id_kelurahan').val(result.data.id_kelurahan).change();
+    //             $("#rt_rw").val(result.data.rt_rw);
+    //             $("#tanggal_lahir").val(result.data.tanggal_lahir);
+    //             $("#jenis_kelamin").val(result.data.jenis_kelamin);
+    //         }
+    //     })
+    // }
 
-    {{-- Delete --}}
-    function konfirmasiDeleted(id) {
-        $('#konfirmasiDeleted').modal('show');
-        $('#deleted_id').val(id);
-    }
+    // {{-- Delete --}}
+    // function konfirmasiDeleted(id) {
+    //     $('#konfirmasiDeleted').modal('show');
+    //     $('#deleted_id').val(id);
+    // }
 
-    function deleteData() {
-        var data_id = document.getElementById("deleted_id").value;
-        if(data_id !== "") {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "DELETE",
-                url: "{{ route('pasien.delete') }}",
-                data: {
-                    id: data_id
-                },
-                success: function (data) {
-                    $('#konfirmasiDeleted').modal('hide');
-                    if (data.status == 'success') {
-                        swal("Success", data.message, "success").then(function() {
-                            tbl_pasien.ajax.reload();
-                            $('#konfirmasiDeleted').modal('hide');
-                            $("#deleted_id").val("");
-                        });
-                    } else {
-                        swal('Error', data.message, 'error');
-                    }
-                },
-                error: function (data) {
-                    $('#konfirmasiDeleted').modal('hide');
-                    swal('Error', 'Terjadi Kesalahan', 'error');
-                }
-            });
-        } else {
-            swal('Error', 'Data tidak bisa di hapus', 'error');
-        }
-    }
+    // function deleteData() {
+    //     var data_id = document.getElementById("deleted_id").value;
+    //     if(data_id !== "") {
+    //         $.ajax({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             type: "DELETE",
+    //             url: "#",
+    //             data: {
+    //                 id: data_id
+    //             },
+    //             success: function (data) {
+    //                 $('#konfirmasiDeleted').modal('hide');
+    //                 if (data.status == 'success') {
+    //                     swal("Success", data.message, "success").then(function() {
+    //                         tbl_pasien.ajax.reload();
+    //                         $('#konfirmasiDeleted').modal('hide');
+    //                         $("#deleted_id").val("");
+    //                     });
+    //                 } else {
+    //                     swal('Error', data.message, 'error');
+    //                 }
+    //             },
+    //             error: function (data) {
+    //                 $('#konfirmasiDeleted').modal('hide');
+    //                 swal('Error', 'Terjadi Kesalahan', 'error');
+    //             }
+    //         });
+    //     } else {
+    //         swal('Error', 'Data tidak bisa di hapus', 'error');
+    //     }
+    // }
 
     {{-- Select2 --}}
     $('#id_kelurahan').each(function () {
